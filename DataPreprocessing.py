@@ -55,14 +55,19 @@ y = LabEnc.fit_transform(y) #fit the label encoder to the dependent variable as 
 #Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
-print(X_train)
-print(X_test)
-print(y_train)
-print(y_test)
+# print(X_train)
+# print(X_test)
+# print(y_train)
+# print(y_test)
 
 
 
 #Feature Scalling
-
+from  sklearn.preprocessing import StandardScaler # this package helps to scale the data
+sc_X = StandardScaler()
+X_train[:,3:] = sc_X.fit_transform(X_train[:,3:]) #fit the scaler to the training set
+X_test[:,3:] = sc_X.transform(X_test[:,3:]) #transform the test set using the same scaler
+print(X_train)
+print(X_test)
 
 
