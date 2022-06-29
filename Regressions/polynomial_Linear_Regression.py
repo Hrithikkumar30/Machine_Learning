@@ -8,6 +8,14 @@ X = dataset.iloc[:, 1:-1].values
 Y = dataset.iloc[: , -1].values
 
 from  sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
 poly_reg = PolynomialFeatures(degree = 4)
 X_poly = poly_reg.fit_transform(X)
-print(X_poly)
+# print(X_poly)
+linea_reg = LinearRegression()
+linea_reg.fit(X_poly, Y)
+
+#visualizing the polynomial linear regression model
+plt.scatter(X, Y, color = 'red')
+plt.plot(X , linea_reg.predict(poly_reg.fit_transform(X)), color = 'blue')
+plt.show()
