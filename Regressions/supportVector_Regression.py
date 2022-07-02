@@ -23,4 +23,10 @@ from sklearn.svm import SVR
 regressor = SVR(kernel = 'rbf')  #kernel = 'rbf' is the default kernel helps to avoid overfitting
 regressor.fit(X , y)
 
-print(sc_y.inverse_transform(regressor.predict(sc_x.transform([[6.9]]))))
+sc_y.inverse_transform(regressor.predict(sc_x.transform([[6.9]])))  #inverse transform the prediction to get the actual value
+
+#visualizing svr results
+
+plt.scatter(sc_x.inverse_transform(X), sc_y.inverse_transform(y), color = 'red')
+plt.plot(sc_x.inverse_transform(X), sc_y.inverse_transform(regressor.predict(X)), color = 'blue')
+plt.show()
