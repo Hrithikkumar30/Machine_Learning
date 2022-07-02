@@ -1,0 +1,158 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled0.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyNzmoJsqWb6xCaUpu9SRpAm",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Hrithikkumar30/Machine_Learning/blob/main/decision%20tree\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "dxj5XPEYlli5"
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "datasets =pd.read_csv('/content/Position_Salaries.csv')\n",
+        "X = datasets.iloc[: , 1:-1].values\n",
+        "y = datasets.iloc[: , -1].values\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "OQLYYVt9mGiM"
+      },
+      "execution_count": 16,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from sklearn.tree import DecisionTreeRegressor\n",
+        "DstReg = DecisionTreeRegressor(random_state = 0)\n",
+        "\n",
+        "DstReg.fit(X, y)"
+      ],
+      "metadata": {
+        "id": "dQzEoo5XmVPm",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "1d6dea83-f9bc-4156-a337-b9bafa796b37"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "DecisionTreeRegressor(random_state=0)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 18
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "DstReg.predict([[6.5]])\n"
+      ],
+      "metadata": {
+        "id": "RpjuKvBfmTav",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "fdb56426-aead-47d4-ead2-3516d613833f"
+      },
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([150000.])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 19
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from sklearn.svm import SVR\n",
+        "regressor = SVR(kernel = 'rbf')  #kernel = 'rbf' is the default kernel helps to avoid overfitting\n",
+        "regressor.fit(X , y)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bqnuw3PdmcQj",
+        "outputId": "5c6ca5f1-5507-42cb-febf-196635c3c91c"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "/usr/local/lib/python3.7/dist-packages/sklearn/utils/validation.py:993: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().\n",
+            "  y = column_or_1d(y, warn=True)\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "SVR()"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# New section"
+      ],
+      "metadata": {
+        "id": "qHuNnqNFlsvG"
+      }
+    }
+  ]
+}
