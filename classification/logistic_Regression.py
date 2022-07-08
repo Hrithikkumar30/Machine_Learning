@@ -44,4 +44,4 @@ print(cm)
 ac = accuracy_score(Y_test,y_pred)
 print(ac)
 
-
+#visualizng training set results
